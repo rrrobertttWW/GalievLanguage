@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32228.430
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalievLanguageSchool", "GalievLanguageSchool.csproj", "{14729BD9-5060-49EE-B068-7C35496EA76F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{14729BD9-5060-49EE-B068-7C35496EA76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14729BD9-5060-49EE-B068-7C35496EA76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14729BD9-5060-49EE-B068-7C35496EA76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14729BD9-5060-49EE-B068-7C35496EA76F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB821B5F-14DD-45F6-9096-8B84CD8A3F13}
+	EndGlobalSection
+EndGlobal
