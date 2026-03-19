@@ -8,12 +8,14 @@
         Title="Galiev" Height="450" Width="800" Icon="res/school_logo.ico" FontFamily="Comic Sans MS" MinHeight="900" MinWidth="1280">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="75"/>
+            <RowDefinition Height="120"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="30"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <Image Source="res/school_logo.png" HorizontalAlignment="Left"></Image>
-        <TextBlock Text="ЯШ" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Frame Grid.Row="0" Background="#FFE7FABF"></Frame>
+        <Image Source="res/school_logo.png" HorizontalAlignment="Left" Grid.Row="0"></Image>
+        <TextBlock Text="Галиев Лангуаге" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0"></TextBlock>
 
         <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"></Frame>
         <Button Name="BtnBack" Content="Назад" Click="BtnBack_Click"  Grid.Row="0" HorizontalAlignment="Right" Background="#FF04A0FF"></Button>

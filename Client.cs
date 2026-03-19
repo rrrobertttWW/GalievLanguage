@@ -11,6 +11,7 @@ namespace GalievLanguageSchool
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public partial class Client
     {
@@ -37,11 +38,39 @@ namespace GalievLanguageSchool
         public virtual ICollection<ClientService> ClientService { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Tag> Tag { get; set; }
+        public string LastVisitDate
+        {
+            get
+            {
+                // ИСПРАВЛЕНО: FirstOrDefault() вместо FirstOrDefoult()
+                var LastVisit = ClientService
+                    .Where(p => p.ClientID == this.ID)
+                    .OrderByDescending(p => p.StartTime)
+                    .FirstOrDefault();
+
+                if (LastVisit == null)
+                {
+                    return "нет";
+                }
+                else
+                {
+                    DateTime startTime = LastVisit.StartTime;
+                    return "Дата последнего посещения: " + startTime.ToString("dd.MM.yyyy"); // Формат с точками
+                }
+            }
+        }
         public string FIO
         {
             get
             {
                 return FirstName + " " + LastName + " " + Patronymic + " ";
+            }
+        }
+        public int TotalVisits
+        {
+            get
+            {
+                return ClientService.Count;
             }
         }
     }
