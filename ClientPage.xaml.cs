@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace GalievLanguageSchool
 {
@@ -355,5 +356,22 @@ namespace GalievLanguageSchool
                 ApplyFilters();
             }
         }
+
+      
+
+        private void UpdBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var currentClient = (sender as Button).DataContext as Client;
+            if (currentClient != null)
+            {
+                Manager.MainFrame.Navigate(new AddPage(currentClient));
+            }
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new AddPage(null));
+        }
+
     }
 }

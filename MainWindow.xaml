@@ -18,6 +18,5 @@
         <TextBlock Text="Галиев Лангуаге" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="0"></TextBlock>
 
         <Frame Grid.Row="1" Name="MainFrame" ContentRendered="MainFrame_ContentRendered" NavigationUIVisibility="Hidden"></Frame>
-        <Button Name="BtnBack" Content="Назад" Click="BtnBack_Click"  Grid.Row="0" HorizontalAlignment="Right" Background="#FF04A0FF"></Button>
     </Grid>
 </Window>

@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Клиенты" FontFamily="Comic Sans MS">
-
+   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -41,6 +41,7 @@
                 <ComboBoxItem>Мужской</ComboBoxItem>
                 <ComboBoxItem>Женский</ComboBoxItem>
             </ComboBox>
+            <Button Grid.Column="5" Grid.Row="1" Grid.RowSpan="4" Content="Добавить клиента" Height="50" Width="222" FontSize="25" Name="AddBtn" Click="AddBtn_Click"  HorizontalAlignment="Right"></Button>
         </StackPanel>
         <!-- Список клиентов -->
         <ListView Name="ClientListView" Grid.Row="1">
@@ -53,6 +54,7 @@
                             <ColumnDefinition Width="400"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
 
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
@@ -62,7 +64,6 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
-
                         <Image Width="150" Grid.Column="0" Stretch="UniformToFill" HorizontalAlignment="Left" Grid.RowSpan="4">
                             <Image.Source>
                                 <Binding Path="PhotoPath">
@@ -72,17 +73,28 @@
                                 </Binding>
                             </Image.Source>
                         </Image>
-
+                        <Image Width="150" 
+                            Grid.Column="0" 
+                            Stretch="UniformToFill" 
+                            HorizontalAlignment="Left" 
+                            Grid.RowSpan="4"
+                            Source="{Binding FullPhotoPath, TargetNullValue={x:Null}}">
+                        </Image>
                         <StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal" Grid.ColumnSpan="3">
                             <TextBlock HorizontalAlignment="Left" FontSize="25" TextWrapping="Wrap" Text="{Binding ID,StringFormat=ID:{0}}"></TextBlock>
                             <TextBlock HorizontalAlignment="Left" FontSize="25" TextWrapping="Wrap" Text="    "></TextBlock>
                             <TextBlock HorizontalAlignment="Left" FontSize="25" TextWrapping="Wrap" Text="{Binding FIO}" ></TextBlock>
 
                         </StackPanel>
+                        
                         <TextBlock Text="{Binding Gender.Name,StringFormat=Пол: {0}}" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding Birthday, StringFormat='Дата рождения: dd.MM.yyyy'}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding Phone,StringFormat=Телефон: {0}}" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" FontSize="20"></TextBlock>
-                        <Button Grid.Column="4" Grid.Row="1" Grid.RowSpan="4" Content="Удалить" Height="75" Width="250" FontSize="25" Name="DelBtn" Click="DelBtn_Click" HorizontalAlignment="Right"></Button>
+                        <StackPanel Grid.Column="4" Grid.Row="1" Grid.RowSpan="5">
+                            <Button Grid.Column="4" Grid.Row="1" Grid.RowSpan="4" Content="Удалить" Height="50" Width="170" FontSize="25" Name="DelBtn" Click="DelBtn_Click" HorizontalAlignment="Right"></Button>
+                            <Button Grid.Column="5" Grid.Row="1" Grid.RowSpan="4" Content="Редактировать" Height="50" Width="170" FontSize="25" Name="UpdBtn" Click="UpdBtn_Click" HorizontalAlignment="Right"></Button>
+                        </StackPanel>
+                        
                         <TextBlock Text="{Binding Email,StringFormat=Почта: {0}}" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Left" FontSize="20"></TextBlock>
                         <TextBlock Text="{Binding RegistrationDate,StringFormat='Дата добавления: dd.MM.yyyy'}" Grid.Column="2" Grid.Row="3" HorizontalAlignment="Left" FontSize="20" ></TextBlock>
                         <TextBlock Text="{Binding TotalVisits,StringFormat=кол-во посещений: {0}}" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Left" FontSize="20" ></TextBlock>
@@ -122,6 +134,6 @@
             <Button Name="RightDirButton" Content="&gt;" Width="30" Height="30"
                 Click="RightDirButton_Click"></Button>
         </StackPanel>
-
+    
     </Grid>
 </Page>

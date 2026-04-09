@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddPage.xaml.cs">
+      <DependentUpon>AddPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs">
       <DependentUpon>GalievLSModel.tt</DependentUpon>
     </Compile>
@@ -99,9 +102,14 @@
     <Compile Include="ServicePhoto.cs">
       <DependentUpon>GalievLSModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="StringToImageConverter.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>GalievLSModel.tt</DependentUpon>
     </Compile>
+    <Page Include="AddPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ClientPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +190,7 @@
       <DependentUpon>GalievLSModel.edmx</DependentUpon>
       <LastGenOutput>GalievLSModel.cs</LastGenOutput>
     </Content>
+    <Resource Include="res\picture.png" />
     <Resource Include="Клиенты\1.jpg" />
     <Resource Include="Клиенты\10.jpg" />
     <Resource Include="Клиенты\11.jpg" />

@@ -12,6 +12,7 @@ namespace GalievLanguageSchool
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.IO;
 
     public partial class Client
     {
@@ -42,28 +43,22 @@ namespace GalievLanguageSchool
         {
             get
             {
-                // ИСПРАВЛЕНО: FirstOrDefault() вместо FirstOrDefoult()
-                var LastVisit = ClientService
-                    .Where(p => p.ClientID == this.ID)
+                // Нам не нужно фильтровать по ID, так как коллекция уже принадлежит этому клиенту
+                var lastVisit = ClientService
                     .OrderByDescending(p => p.StartTime)
                     .FirstOrDefault();
 
-                if (LastVisit == null)
-                {
+                if (lastVisit == null)
                     return "нет";
-                }
-                else
-                {
-                    DateTime startTime = LastVisit.StartTime;
-                    return "Дата последнего посещения: " + startTime.ToString("dd.MM.yyyy"); // Формат с точками
-                }
+
+                return $"Дата последнего посещения: {lastVisit.StartTime:dd.MM.yyyy}";
             }
         }
         public string FIO
         {
             get
             {
-                return FirstName + " " + LastName + " " + Patronymic + " ";
+                return $"{FirstName} {LastName} {Patronymic}".Trim();
             }
         }
         public int TotalVisits
@@ -73,5 +68,29 @@ namespace GalievLanguageSchool
                 return ClientService.Count;
             }
         }
+
+        public string FullPhotoPath
+        {
+            get
+            {
+                // Если в базе пусто или записано "Клиенты" без имени файла
+                if (string.IsNullOrWhiteSpace(PhotoPath) || PhotoPath.Trim() == "Клиенты")
+                {
+                    return null;
+                }
+
+                // Склеиваем путь к папке приложения и путь из базы
+                string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, PhotoPath);
+
+                // Проверяем, существует ли файл физически на диске
+                if (File.Exists(fullPath))
+                {
+                    return fullPath;
+                }
+
+                return null; // Если файла нет, возвращаем null (картинка будет пустой)
+            }
+        }
     }
 }
+
